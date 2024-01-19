@@ -1,0 +1,12 @@
+@media only screen and (min-width: 200px) and (max-width: 500px) {
+    .form {
+      border: 1px solid rgb(199, 196, 196);
+      width: 320px;
+    }
+  }
+  @media only screen and (min-width: 480px) and (max-width: 760px) {
+    .form {
+      border: 1px solid rgb(199, 196, 196);
+      width: 450px;
+    }
+  }

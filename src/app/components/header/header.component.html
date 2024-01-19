@@ -1,16 +1,16 @@
-<mat-toolbar class=" justify-between mat-tool-bar border-x">
-  <a routerLink="home" class="text-red-600 font-bold">Lalita Knitting Co.</a>
+<mat-toolbar class=" justify-between mat-tool-bar border-x ">
+  <a routerLink="home" class="text-red-600 font-bold header-text">Lalita Knitting Co.</a>
   <div>
     <ng-container *ngIf="!isAuthenticated()">
-      <button mat-raised-button [routerLink]="['/login']" routerLinkActive="router-link-active"  class="mx-3 mb-3" color="warn" > Login</button>
+      <button mat-raised-button  [routerLink]="['/login']" routerLinkActive="router-link-active"  class="mx-3 mb-3 login-register-header" color="warn" > Login</button>
 
       <!-- Register Button -->
-      <button mat-raised-button [routerLink]="['/register']" routerLinkActive="router-link-active"  color="warn" class="mx-3 mb-3"> Register</button>
+      <!-- <button  [routerLink]="['/register']" routerLinkActive="router-link-active"  color="warn" class="mx-3 mb-3 login-register-header"> Register</button> -->
     
     </ng-container>
 
     <ng-container *ngIf="isAuthenticated()" >
-    <button (click)="logOutFn()" mat-raised-button [routerLink]="['/login']" routerLinkActive="router-link-active" color="warn" >Logout </button>
+    <button mat-raised-button (click)="logOutFn()"  [routerLink]="['/login']" routerLinkActive="router-link-active" color="warn" class="mb-4 login-register-header" >Logout </button>
     </ng-container>
 
   <button class="" mat-icon-button [matMenuTriggerFor]="menu">

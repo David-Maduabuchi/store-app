@@ -36,6 +36,7 @@ import { AuthModule } from "./auth/auth.module";
     FiltersComponent,
     ProductBoxComponent,
     CartComponent,
+    
   ],
   imports: [
     BrowserModule,

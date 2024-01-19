@@ -38,6 +38,7 @@ export class CartService {
           user_id,
         })
         .subscribe((response) => {
+          console.log('SERVER RESPONSE: ', response) 
           this.getCartItems(user_id).subscribe((_cart) => {
             this.cart.next(_cart);
           });
@@ -52,6 +53,40 @@ export class CartService {
 
     // End of Trial
   };
+
+  onAddQuantity = (item: CartItem) => {
+    const items = [...this.cart.value.items];
+    const itemInCart = items.find((_item) => _item.id === item.id);
+    const user_id = this.authService.getUserId();
+
+    if (itemInCart) {
+      itemInCart.quantity++;
+    } else {
+      items.push(item);
+    }
+    this.cart.next({ items });
+    this._snackBar.open("1 item added to cart", "ok", { duration: 300 });
+
+    if (user_id) {
+      this.http
+        .post("http://localhost:3000/store-api/cart/add-quantity", {
+          item,
+          user_id,
+        })
+        .subscribe((response) => {
+          console.log('SERVER RESPONSE: ', response) 
+          this.getCartItems(user_id).subscribe((_cart) => {
+            this.cart.next(_cart);
+          });
+         
+          this._snackBar.open("1 item added to cart, ", "ok", {
+            duration: 400,
+          });
+        });
+    } else {
+      this._snackBar.open("Please Login First", "Ok", { duration: 5000 });
+    }
+  }
 
   getCartItems(userId: number | null): Observable<Cart> {
     // Assuming you have a method like this in your service

@@ -83,6 +83,14 @@ export class AuthService {
     window.location.reload();
   };
 
+  //Redirections Sections
+  redirectToRegister = (): void => {
+    this.router.navigate(["register"])
+  }
+  redirectToLogin  =(): void => {
+    this.router.navigate(["login"])
+  }
+
   login = (form: LoginRegisterInterface) => {
     this.isLoading = true;
     this.http

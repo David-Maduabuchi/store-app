@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   constructor(private cartService: CartService, private storeService: StoreService) {
     
   }
+  
   onItemsCountChange = (newCount: number):void => {
     this.count = newCount.toString()
     this.getProducts()

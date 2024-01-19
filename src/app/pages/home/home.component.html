@@ -1,13 +1,9 @@
 <!-- Like the name implies, it is an angular element used to create sidebars in projects -->
-<mat-drawer-container
-  class="min-h-full max-w-7xl mx-auto border-x mat-custom-drawer-cont"
-  [autosize]="true"
->
-  <mat-drawer mode="side" opened class="p-6 ">
-    <app-filters
-    (showCategory)="onShowCategory($event)"></app-filters>
-  </mat-drawer>
-  <mat-drawer-content class="p-6 mat-custom-drawer">
+<div class="min-h-full max-w-7xl mx-auto border-x container">
+  <div class="p-6 header">
+    <app-filters (showCategory)="onShowCategory($event)"> </app-filters>
+  </div>
+  <div class="p-6 prod-cont">
     <!-- This is the next displayed coontainer -->
     <app-products-header
       (columnsCountChange)="onColumnsCountChange($event)"
@@ -15,16 +11,15 @@
       (itemsCountChange)="onItemsCountChange($event)"
     ></app-products-header>
     <!-- It is an automatic function -->
-    <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
-      <mat-grid-tile *ngFor="let product of products"   >
-            <!-- this is where we received the products that was inputed -->
-        <app-product-box 
+    <div class="product-cont">
+      <div  class="single-product" *ngFor="let product of products">
+        <!-- this is where we received the products that was inputed -->
+        <app-product-box
           [product]="product"
           (addToCart)="onAddToCart($event)"
-          class="w-full"
           [fullWidthMode]="cols === 1"
         ></app-product-box>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-drawer-content>
-</mat-drawer-container>
+      </div>
+    </div>
+  </div>
+</div>

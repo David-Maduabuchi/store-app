@@ -5,6 +5,7 @@ import { LoginRegisterInterface } from "../../models/Auth.model";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
+  styleUrl: "./login.component.css"
 })
 export class LoginComponent {
   constructor(private authService: AuthService) {}
@@ -27,4 +28,7 @@ export class LoginComponent {
   errTxt = () => {
     return this.authService.errorMessageLogin;
   };
+  redirect = (): void => {
+    this.authService.redirectToRegister();
+  }
 }

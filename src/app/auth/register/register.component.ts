@@ -4,7 +4,8 @@ import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrl: "./register.component.css"
 })
 export class RegisterComponent {
   constructor(private authService: AuthService) {
@@ -36,5 +37,8 @@ export class RegisterComponent {
 
   errTxt = () => {
     return this.authService.errorMessageRegister;
+  }
+  redirect = (): void => {
+    this.authService.redirectToLogin();
   }
 }

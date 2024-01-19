@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
 
   // Increase quantity plus sign
   onAddQuantity(item: CartItem): void {
-    this.cartService.addToCart(item);
+    this.cartService.onAddQuantity(item);
   }
 
   onRemoveQuantity(item: CartItem): void {
