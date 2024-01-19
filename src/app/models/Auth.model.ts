@@ -14,4 +14,5 @@ export interface ServerResponse {
     },
     token: any,
     id: number,
+    error: any,
   }

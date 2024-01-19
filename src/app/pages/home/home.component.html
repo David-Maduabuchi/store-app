@@ -1,13 +1,13 @@
 <!-- Like the name implies, it is an angular element used to create sidebars in projects -->
 <mat-drawer-container
-  class="min-h-full max-w-7xl mx-auto border-x"
+  class="min-h-full max-w-7xl mx-auto border-x mat-custom-drawer-cont"
   [autosize]="true"
 >
-  <mat-drawer mode="side" opened class="p-6">
+  <mat-drawer mode="side" opened class="p-6 ">
     <app-filters
     (showCategory)="onShowCategory($event)"></app-filters>
   </mat-drawer>
-  <mat-drawer-content class="p-6">
+  <mat-drawer-content class="p-6 mat-custom-drawer">
     <!-- This is the next displayed coontainer -->
     <app-products-header
       (columnsCountChange)="onColumnsCountChange($event)"

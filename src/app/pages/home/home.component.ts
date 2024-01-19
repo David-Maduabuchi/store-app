@@ -15,6 +15,7 @@ const ROWS_HEIGHT: {
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
+  styleUrl: "./home.component.css"
 })
 export class HomeComponent implements OnInit, OnDestroy{
   cols: number = 3;
@@ -30,7 +31,6 @@ export class HomeComponent implements OnInit, OnDestroy{
   }
   onItemsCountChange = (newCount: number):void => {
     this.count = newCount.toString()
-    console.log(newCount.toString)
     this.getProducts()
   }
   onSortChange = (newSort: string): void => {

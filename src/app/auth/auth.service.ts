@@ -62,10 +62,14 @@ export class AuthService {
         })
       )
       .subscribe((res) => {
-        if (res && res.id) {
+        if (res && res.user.id) {
+          localStorage.setItem(this.JWT_STORAGE_ID, res.user.id.toString());
           this.isAuthenticated = true;
           this.isLoading = false;
-          this.router.navigate([""]);
+          this.setAuthToken(res.token)
+          this.router.navigate([""]).then(() => {
+            window.location.reload()
+          });
         } else {
           this.isAuthenticated = false;
           this.isLoading = false;
@@ -76,6 +80,7 @@ export class AuthService {
   logOut = () => {
     this.isAuthenticated = false;
     this.clearAuthToken();
+    window.location.reload();
   };
 
   login = (form: LoginRegisterInterface) => {
@@ -104,11 +109,14 @@ export class AuthService {
           this.isAuthenticated = true;
           this.isLoading = false;
           this.setAuthToken(res.token);
-          this.router.navigate([""]);
+          this.router.navigate([""]).then(() => {
+            window.location.reload();
+          })
         } else {
           this.isAuthenticated = false;
           this.isLoading = false;
         }
       });
+     
   };
 }
