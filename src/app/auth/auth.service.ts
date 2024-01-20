@@ -44,7 +44,7 @@ export class AuthService {
   register = (form: LoginRegisterInterface) => {
     this.isLoading = true;
     this.http
-      .post<ServerResponse>("http://localhost:3000/register", {
+      .post<ServerResponse>("https://zaraki-store-api.onrender.com/register", {
         username: form.username,
         email: form.email,
         password: form.password,
@@ -94,7 +94,7 @@ export class AuthService {
   login = (form: LoginRegisterInterface) => {
     this.isLoading = true;
     this.http
-      .post<ServerResponse>("http://localhost:3000/signin", {
+      .post<ServerResponse>("https://zaraki-store-api.onrender.com/signin", {
         email: form.email,
         password: form.password,
       })

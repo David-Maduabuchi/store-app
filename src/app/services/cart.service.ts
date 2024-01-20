@@ -33,7 +33,7 @@ export class CartService {
 
     if (user_id) {
       this.http
-        .post("http://localhost:3000/store-api/cart/add", {
+        .post("https://zaraki-store-api.onrender.com/store-api/cart/add", {
           item,
           user_id,
         })
@@ -73,12 +73,7 @@ export class CartService {
           item,
           user_id,
         })
-        .subscribe((response) => {
-          console.log('SERVER RESPONSE: ', response) 
-          this.getCartItems(user_id).subscribe((_cart) => {
-            this.cart.next(_cart);
-          });
-         
+        .subscribe(() => {
           this._snackBar.open("1 item added to cart, ", "ok", {
             duration: 400,
           });
@@ -91,7 +86,7 @@ export class CartService {
   getCartItems(userId: number | null): Observable<Cart> {
     // Assuming you have a method like this in your service
     return this.http
-      .get<CartItem[]>(`http://localhost:3000/store-api/cart/${userId}`)
+      .get<CartItem[]>(`https://zaraki-store-api.onrender.com/store-api/cart/${userId}`)
       .pipe(
         map((cartItems: CartItem[]) => {
           return { items: cartItems };
@@ -129,7 +124,7 @@ export class CartService {
     //Server-side Code
     if (user_id) {
       this.http
-        .post("http://localhost:3000/store-api/cart/remove", {
+        .post("https://zaraki-store-api.onrender.com/store-api/cart/remove", {
           id,
           user_id,
         })
@@ -151,7 +146,7 @@ export class CartService {
     
     if (user_id) {
       this.http
-        .post("http://localhost:3000/store-api/cart/delete-all", {
+        .post("https://zaraki-store-api.onrender.com/store-api/cart/delete-all", {
           user_id,
         }) .subscribe(() => {
           console.log('cart cleared')
@@ -175,7 +170,7 @@ export class CartService {
     }
     if (user_id) {
       this.http
-        .post("http://localhost:3000/store-api/cart/delete", {
+        .post("https://zaraki-store-api.onrender.com/store-api/cart/delete", {
           id,
           user_id,
         }) .subscribe(() => {
