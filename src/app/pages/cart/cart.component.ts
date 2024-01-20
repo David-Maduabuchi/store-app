@@ -66,7 +66,7 @@ export class CartComponent implements OnInit {
   onCheckOut(): void {
     this.isCheckingOut = true;
     this.http
-      .post("http://localhost:3000/checkout", {
+      .post("https://zaraki-store-api.onrender.com/checkout", {
         items: this.cart.items,
       })
       .subscribe(async (res: any) => {
