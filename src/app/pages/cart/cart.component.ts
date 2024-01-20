@@ -8,12 +8,14 @@ import { AuthService } from "../../auth/auth.service";
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.component.html",
+  styleUrl: "./cart.component.css"
 })
 export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private http: HttpClient, private authService: AuthService) {}
   cart: Cart = { items: [] };
-
   dataSource: Array<CartItem> = [];
+  isCheckingOut: boolean = false;
+
   displayedColumns: Array<string> = [
     "product",
     "name",
@@ -62,11 +64,13 @@ export class CartComponent implements OnInit {
   
 
   onCheckOut(): void {
+    this.isCheckingOut = true;
     this.http
       .post("http://localhost:3000/checkout", {
         items: this.cart.items,
       })
       .subscribe(async (res: any) => {
+        this.isCheckingOut = false;
         let stripe = await loadStripe(
           "pk_test_51OY4oHFpIbLv69oWFtkDLXKDxK0ivqNy9n2i7LXLcyEyimfRE2q2J6R8qc4r32WF3JDlnR90ZZVbLeYu5hENCoBx0026eGSS3V"
         );
