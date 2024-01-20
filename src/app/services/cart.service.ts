@@ -69,7 +69,7 @@ export class CartService {
 
     if (user_id) {
       this.http
-        .post("http://localhost:3000/store-api/cart/add-quantity", {
+        .post("https://zaraki-store-api.onrender.com/store-api/cart/add-quantity", {
           item,
           user_id,
         })
