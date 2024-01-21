@@ -10,7 +10,7 @@
 
 .single-product {
   padding: 20px;
-  width: 250px;
+  width: 200px;
   height: auto;
   margin: 0 auto;
 }
@@ -19,4 +19,30 @@
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 500px) {
+  .single-product {
+    padding: 20px 0;
+    width: 140px;
+    height: auto;
+    margin: 0;
+  }
+  .prod-cont {
+    margin: 0;
+    padding: 0;
+  }
+  
+.product-cont {
+  margin: 0; padding: 0;
+  margin-right: 0;
+
+}
+
+}
+@media only screen and (min-width: 480px) and (max-width: 760px) {
+  .form {
+    border: 1px solid rgb(199, 196, 196);
+    width: 450px;
+  }
 }
