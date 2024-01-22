@@ -1,122 +1,130 @@
 <div class="bg-white flex justify-center h-screen">
- 
-    <form
-      (ngSubmit)="submit()"
-      class="p-4 rounded-lg border m-auto w-1/3 form"
-      #myForm="ngForm" 
+  <form
+    (ngSubmit)="submit()"
+    class="p-4 rounded-lg border m-auto w-1/3 form"
+    #myForm="ngForm"
+  >
+    <h1 class="text-center text-xl">Register</h1>
+    <span class="text-center text-red-500 mx-auto"> {{ errTxt() }} </span>
+    <!-- Username -->
+    <div class="my-5 w-full">
+      <label for="email">Username</label>
+      <input
+        id="name"
+        type="text"
+        placeholder="username"
+        class="p-2 rounded w-full border"
+        [(ngModel)]="form.username"
+        name="username"
+        #username="ngModel"
+        required
+      />
+    </div>
+    <!-- Validation Check -->
+    <div
+      *ngIf="username.invalid && (username.dirty || username.touched)"
+      class="p-2 bg-red-300 text-red-800 rounded"
     >
-      <h1 class="text-center text-xl">Register</h1>
-      <span class="text-center text-red-500 mx-auto"> {{ errTxt() }} </span>
-      <!-- Username -->
-      <div class="my-5 w-full">
-        <label for="email">Username</label>
-        <input
-          id="name"
-          type="text"
-          placeholder="username"
-          class="p-2 rounded w-full border"
-          [(ngModel)]="form.username"
-          name="username"
-          #username="ngModel"
-          required
-        />
-      </div>
-      <!-- Validation Check -->
-      <div
-        *ngIf="username.invalid && (username.dirty || username.touched)"
-        class="p-2 bg-red-300 text-red-800 rounded"
+      Username field must be valid
+    </div>
+    <!-- End of Username -->
+
+    <!-- Email -->
+    <div class="my-5 w-full">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="example123@gmail.com"
+        class="p-2 rounded w-full border"
+        [(ngModel)]="form.email"
+        name="email"
+        #email="ngModel"
+        required
+      />
+    </div>
+
+    <!-- Email validation officer -->
+    <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="p-2 bg-red-300 text-red-800 rounded"
+    >
+      Email field must be valid
+    </div>
+    <!-- End of Email -->
+
+    <div class="my-5 w-full">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Password"
+        class="p-2 rounded w-full border"
+        [(ngModel)]="form.password"
+        name="password"
+        required
+        #password="ngModel"
+      />
+    </div>
+    <!-- Password Validation Checker -->
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="p-2 bg-red-300 text-red-800 rounded"
+    >
+      Password field must be valid
+    </div>
+    <!-- End of Password Validation Checker -->
+
+    <div class="my-5 w-full">
+      <label for="password">Confirm Password</label>
+      <input
+        id="confirm_password"
+        type="password"
+        placeholder="Confirm Password"
+        class="p-2 rounded w-full border"
+        [(ngModel)]="form.confirm_password"
+        name="confirm_password"
+        required
+        #confirm_password="ngModel"
+      />
+    </div>
+    <!-- ConfirmPassword Validation Checker -->
+    <div
+      *ngIf="
+        confirm_password.invalid &&
+        (confirm_password.dirty || confirm_password.touched)
+      "
+      class="p-2 bg-red-300 text-red-800 rounded"
+    >
+      Confirm Password field must be valid
+    </div>
+
+    <span class="text-red-500 text-center w-full">
+      {{ passwordValidationCheck() ? "" : "Passwords do not match" }}
+    </span>
+    <!-- End of confirmPassword Validation Checker -->
+
+    <div class="my-5 w-full">
+      <button
+        mat-raised-button
+        color="warn"
+        type="submit"
+        [disabled]="myForm.form.invalid"
+        class="p-2 w-full rounded"
       >
-        Username field must be valid
-      </div>
-      <!-- End of Username -->
-
-      <!-- Email -->
-      <div class="my-5 w-full">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="example123@gmail.com"
-          class="p-2 rounded w-full border"
-          [(ngModel)]="form.email"
-          name="email"
-          #email="ngModel"
-          required
-        />
-      </div>
-
-      <!-- Email validation officer -->
-      <div
-        *ngIf="email.invalid && (email.dirty || email.touched)"
-        class="p-2 bg-red-300 text-red-800 rounded"
+        {{ isLoadingFn() ? "Creating User..." : "Register" }}
+      </button>
+    </div>
+    <div class="">
+      Already have an Account?
+      <span class="text-red-500 cursor-pointer" (click)="redirect()"
+        >Login</span
       >
-        Email field must be valid
-      </div>
-      <!-- End of Email -->
-
-      <div class="my-5 w-full">
-        <label for="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          class="p-2 rounded w-full border"
-          [(ngModel)]="form.password"
-          name="password"
-          required
-          #password="ngModel"
-        />
-      </div>
-      <!-- Password Validation Checker -->
-      <div
-        *ngIf="password.invalid && (password.dirty || password.touched)"
-        class="p-2 bg-red-300 text-red-800 rounded"
-      >
-        Password field must be valid
-      </div>
-      <!-- End of Password Validation Checker -->
-
-      <div class="my-5 w-full">
-        <label for="password">Confirm Password</label>
-        <input
-          id="confirm_password"
-          type="password"
-          placeholder="Confirm Password"
-          class="p-2 rounded w-full border"
-          [(ngModel)]="form.confirm_password"
-          name="confirm_password"
-          required
-          #confirm_password="ngModel"
-        />
-      </div>
-      <!-- ConfirmPassword Validation Checker -->
-      <div
-        *ngIf="
-          confirm_password.invalid &&
-          (confirm_password.dirty || confirm_password.touched)
-        "
-        class="p-2 bg-red-300 text-red-800 rounded"
-      >
-        Confirm Password field must be valid
-      </div>
-
-      <span class="text-red-500 text-center w-full">
-        {{ passwordValidationCheck() ? "" : "Passwords do not match" }}
-      </span>
-      <!-- End of confirmPassword Validation Checker -->
-
-      <div class="my-5 w-full">
-        <button
-          mat-raised-button
-          color="warn"
-          type="submit"
-          [disabled]="myForm.form.invalid"
-          class="p-2 w-full rounded"
-        >
-          {{ isLoadingFn() ? "Creating User..." : "Register" }}
-        </button>
-      </div>
-      <div class="register">Already have an Account? <span class="text-red-500" (click)="redirect()">Login</span></div>
-
-    </form>
+    </div>
+    <div class="w-full register mt-3">
+      Please Wait for at least 30 seconds afer clicking as our servers are
+      currently slow at the moment. We apologize for the incovenience and are
+      working tirelessly to fix it
+    </div>
+  </form>
 </div>

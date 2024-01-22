@@ -1,3 +1,10 @@
+<head>
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3650363724513491"
+    crossorigin="anonymous"
+  ></script>
+</head>
 <mat-card class="hiddenmf max-w-7xl mx-auto" *ngIf="cart.items.length">
   <table
     #matContainer
@@ -127,7 +134,9 @@
       {{ getTotal(cart.items) | currency }}
     </span>
   </div>
-  <h5 class="cart-summary item-in-cart">Items in Cart: {{cart.items.length}}</h5>
+  <h5 class="cart-summary item-in-cart">
+    Items in Cart: {{ cart.items.length }}
+  </h5>
 
   <ng-container class="item-prod-box" *ngFor="let element of dataSource">
     <div class="item-container">
@@ -157,13 +166,13 @@
   </ng-container>
   <div class="checkout">
     <mat-icon class="phone">phone</mat-icon>
-  <button
-    (click)="onCheckOut()"
-    class="checkout-button"
-    color="warn"
-    mat-raised-button
-  >
-  {{isCheckingOut ? "Connecting..." : "Checkout"}}
-  </button>
-</div>
+    <button
+      (click)="onCheckOut()"
+      class="checkout-button"
+      color="warn"
+      mat-raised-button
+    >
+      {{ isCheckingOut ? "Connecting..." : "Checkout" }}
+    </button>
+  </div>
 </div>

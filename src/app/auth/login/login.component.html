@@ -61,6 +61,14 @@
         {{ isLoadingFn() ? "Logging In..." : "Login" }}
       </button>
     </div>
-    <div class="register">Don't have an account yet? <span class="text-red-500" (click)="redirect()">Register</span></div>
+    <div class="w-full">
+      Don't have an account yet?
+      <span class="text-red-500 cursor-pointer" (click)="redirect()">Register</span>
+    </div>
+    <div class="w-full register mt-3">
+      Please Wait for at least 30 seconds afer clicking as our servers are
+      currently slow at the moment. We apologize for the incovenience and are
+      working tirelessly to fix it
+    </div>
   </form>
 </div>
